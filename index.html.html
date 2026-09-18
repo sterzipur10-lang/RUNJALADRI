@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Probolinggo Run 2026 | Pendaftaran 5K & 10K</title>
+  <meta name="description" content="Website pendaftaran event lari kategori 5K dan 10K dengan konfirmasi QR Code.">
+  <link rel="stylesheet" href="style.css">
+  <!-- QR generator & scanner -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+  <script src="https://unpkg.com/html5-qrcode" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">🏃</span>
+      <div>
+        <strong>PROBOLINGGO RUN</strong>
+        <small>5K & 10K • 2026</small>
+      </div>
+    </div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#kategori">Kategori</a>
+      <a href="#daftar">Daftar</a>
+      <a href="#cek">Cek Peserta</a>
+      <a href="#admin">Admin</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <span class="eyebrow">EVENT LARI KOTA PROBOLINGGO</span>
+        <h1>Run Your <span>Best</span> Race.</h1>
+        <p>Daftar event lari 5K & 10K, dapatkan nomor peserta dan QR Code untuk konfirmasi.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#daftar">Daftar Sekarang</a>
+          <a class="btn btn-outline" href="#cek">Cek Pendaftaran</a>
+        </div>
+        <div class="event-info">
+          <div><b>15</b><span>NOV 2026</span></div>
+          <div><b>06:00</b><span>START</span></div>
+          <div><b>KOTA</b><span>PROBOLINGGO</span></div>
+        </div>
+      </div>
+      <div class="runner-card">
+        <div class="runner-circle">🏃‍♂️</div>
+        <div class="floating-tag tag-1">5K</div>
+        <div class="floating-tag tag-2">10K</div>
+        <div class="floating-tag tag-3">FINISH</div>
+      </div>
+    </section>
+
+    <section id="kategori" class="section">
+      <div class="section-title">
+        <span class="eyebrow">PILIH JARAK</span>
+        <h2>Kategori Lomba</h2>
+        <p>Pilih kategori yang sesuai kemampuanmu.</p>
+      </div>
+      <div class="category-grid">
+        <article class="category-card">
+          <div class="distance">5K</div>
+          <h3>Fun Run 5K</h3>
+          <p>Cocok untuk pemula dan peserta yang ingin menikmati suasana lomba.</p>
+          <ul><li>Start 06:00 WIB</li><li>Race bib + QR Code</li><li>Finisher medal</li></ul>
+          <button class="btn btn-dark select-category" data-category="5K">Pilih 5K</button>
+        </article>
+        <article class="category-card featured">
+          <span class="popular">POPULAR</span>
+          <div class="distance">10K</div>
+          <h3>Challenge 10K</h3>
+          <p>Tantang dirimu menyelesaikan jarak 10 kilometer.</p>
+          <ul><li>Start 05:45 WIB</li><li>Race bib + QR Code</li><li>Finisher medal</li></ul>
+          <button class="btn btn-primary select-category" data-category="10K">Pilih 10K</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="daftar" class="section section-alt">
+      <div class="section-title">
+        <span class="eyebrow">REGISTRASI</span>
+        <h2>Form Pendaftaran</h2>
+        <p>Isi data dengan benar. Nomor peserta dan QR Code dibuat otomatis.</p>
+      </div>
+
+      <form id="registrationForm" class="form-card">
+        <div class="form-row">
+          <label>Nama Lengkap *
+            <input id="fullName" required maxlength="80" placeholder="Nama sesuai identitas">
+          </label>
+          <label>NIK *
+            <input id="nik" required inputmode="numeric" pattern="[0-9]{16}" maxlength="16" placeholder="16 digit NIK">
+          </label>
+        </div>
+        <div class="form-row">
+          <label>Tanggal Lahir *
+            <input id="birthDate" required type="date">
+          </label>
+          <label>Jenis Kelamin *
+            <select id="gender" required>
+              <option value="">Pilih</option>
+              <option>Laki-laki</option>
+              <option>Perempuan</option>
+            </select>
+          </label>
+        </div>
+        <div class="form-row">
+          <label>No. WhatsApp *
+            <input id="phone" required inputmode="tel" maxlength="20" placeholder="08xxxxxxxxxx">
+          </label>
+          <label>Email *
+            <input id="email" required type="email" maxlength="100" placeholder="nama@email.com">
+          </label>
+        </div>
+        <div class="form-row">
+          <label>Kategori *
+            <select id="category" required>
+              <option value="">Pilih kategori</option>
+              <option value="5K">5K — Fun Run</option>
+              <option value="10K">10K — Challenge</option>
+            </select>
+          </label>
+          <label>Ukuran Jersey *
+            <select id="jersey" required>
+              <option value="">Pilih ukuran</option>
+              <option>XS</option><option>S</option><option>M</option><option>L</option>
+              <option>XL</option><option>XXL</option>
+            </select>
+          </label>
+        </div>
+        <label>Alamat *
+          <textarea id="address" required maxlength="250" rows="3" placeholder="Alamat lengkap"></textarea>
+        </label>
+        <div class="form-row">
+          <label>Kontak Darurat *
+            <input id="emergencyName" required maxlength="80" placeholder="Nama kontak darurat">
+          </label>
+          <label>No. Kontak Darurat *
+            <input id="emergencyPhone" required inputmode="tel" maxlength="20" placeholder="08xxxxxxxxxx">
+          </label>
+        </div>
+        <label class="checkbox">
+          <input id="agreement" type="checkbox" required>
+          <span>Saya menyatakan data yang diisi benar dan menyetujui ketentuan event.</span>
+        </label>
+        <button class="btn btn-primary btn-large" type="submit">Kirim Pendaftaran</button>
+      </form>
+    </section>
+
+    <section id="confirmation" class="section hidden">
+      <div class="section-title">
+        <span class="eyebrow">KONFIRMASI</span>
+        <h2>Pendaftaran Berhasil</h2>
+      </div>
+      <div class="confirmation-card">
+        <div>
+          <span class="status">✓ TERDAFTAR</span>
+          <h3 id="confirmName">-</h3>
+          <div class="participant-number" id="confirmNumber">-</div>
+          <p>Kategori: <b id="confirmCategory">-</b></p>
+          <p>Simpan QR Code ini dan tunjukkan saat check-in/race pack.</p>
+          <button class="btn btn-dark" id="printParticipant">Cetak Kartu</button>
+          <button class="btn btn-outline" id="newRegistration">Daftar Peserta Lain</button>
+        </div>
+        <div class="qr-panel">
+          <div id="qrcode"></div>
+          <small id="qrText">QR Code peserta</small>
+        </div>
+      </div>
+    </section>
+
+    <section id="cek" class="section section-alt">
+      <div class="section-title">
+        <span class="eyebrow">VALIDASI</span>
+        <h2>Cek Pendaftaran</h2>
+        <p>Peserta dapat mencari berdasarkan nomor peserta atau NIK.</p>
+      </div>
+      <div class="lookup-card">
+        <div class="lookup-row">
+          <input id="lookupInput" placeholder="Contoh: 5K-00001 atau NIK">
+          <button class="btn btn-primary" id="lookupBtn">Cari</button>
+        </div>
+        <div id="lookupResult"></div>
+      </div>
+    </section>
+
+    <section id="admin" class="section">
+      <div class="section-title">
+        <span class="eyebrow">PANITIA</span>
+        <h2>Dashboard Admin</h2>
+        <p>Kelola peserta dan validasi QR Code di lokasi.</p>
+      </div>
+
+      <div id="adminLogin" class="admin-login">
+        <input id="adminPin" type="password" placeholder="PIN admin">
+        <button class="btn btn-dark" id="adminLoginBtn">Masuk Admin</button>
+        <small>PIN demo: <b>123456</b></small>
+      </div>
+
+      <div id="adminPanel" class="hidden">
+        <div class="stats-grid">
+          <div class="stat"><span>Total</span><b id="statTotal">0</b></div>
+          <div class="stat"><span>5K</span><b id="stat5K">0</b></div>
+          <div class="stat"><span>10K</span><b id="stat10K">0</b></div>
+          <div class="stat"><span>Check-in</span><b id="statChecked">0</b></div>
+        </div>
+
+        <div class="admin-tools">
+          <button class="btn btn-primary" id="startScanner">📷 Scan QR</button>
+          <button class="btn btn-outline" id="stopScanner">Stop Scanner</button>
+          <button class="btn btn-outline" id="exportCsv">Export CSV</button>
+          <button class="btn btn-danger" id="clearData">Hapus Semua Data</button>
+        </div>
+
+        <div id="reader" class="scanner"></div>
+        <div id="scanResult"></div>
+
+        <div class="table-card">
+          <div class="table-head">
+            <h3>Daftar Peserta</h3>
+            <input id="adminSearch" placeholder="Cari nama / nomor / NIK">
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>No.</th><th>Peserta</th><th>Kategori</th><th>Jersey</th><th>Status</th><th>Aksi</th></tr></thead>
+              <tbody id="participantTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Probolinggo Run. Demo sistem pendaftaran 5K & 10K.</p>
+  </footer>
+
+  <div id="toast" class="toast"></div>
+</body>
+</html>
